@@ -3,8 +3,10 @@
 module Chapter16
   class Exercise1
     def self.parse_mail(mail)
-      mail.match(/@/)
-      { '$1' => $`, '$2' => $' }
+      # mail.match(/@/)
+      # { '$1' => $`, '$2' => $' }
+      mail.match(/^([^@]+)@(.*)$/)
+      [$1, $2]
     end
   end
 
@@ -17,7 +19,8 @@ module Chapter16
 
   class Exercise3
     def self.word_capitalize(word)
-      word.split(/-/).collect{|w| w.capitalize}.join('-')
+      # word.split(/-/).collect{|w| w.capitalize}.join('-')
+      word.split(/-/).map(&:capitalize).join('-')
     end
   end
 end

@@ -25,7 +25,9 @@ module Chapter14
     def self.count_char
       char_ary = 'Ruby is an object oriented programming language'.split('')
       char_hash = char_ary.sort.each_with_object(Hash.new(0)) { |a, hash| hash[a] += 1; }
-      char_hash.each { |k, v| print "'#{k}': "; v.times { print '*' }; puts }
+      char_hash.each do |char, count|
+        puts "'#{char}': #{ '*' * count }"
+      end
     end
   end
 
@@ -34,7 +36,7 @@ module Chapter14
     KANNUM_10 = { '千' => 1000, '百' => 100, '十' => 10, '' => 1 }.freeze
 
     def self.kan2num(kan)
-      kan.scan(/([^千百十]*)([千百十]?)/).inject(-1) do |ret, (first_digit, unit)|
+      kan.scan(/([^千百十]?)([千百十]?)/).inject(-1) do |ret, (first_digit, unit)|
         ret + KANNUM_1_9[first_digit] * KANNUM_10[unit]
       end
     end
@@ -72,7 +74,7 @@ module Chapter15
 
   class Exercise3
     def self.exercise3
-      Chapter15::Exercise1.wday.each { |k, v| puts "「#{k}」は#{v}のことです。" }
+      Chapter15::Exercise1.wday.each { |en, jp| puts "「#{en}」は#{jp}のことです。" }
     end
   end
 

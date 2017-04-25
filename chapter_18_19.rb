@@ -35,3 +35,41 @@ puts
 puts 'exercise 2'
 Chapter18::Exercise2.du(Dir.pwd)
 puts '****************************************'
+
+# Chapter 19
+
+module Chapter19
+  class Exercise1
+    def self.to_utf8(str_euc, str_sjis)
+      str_utf8 = str_euc.encode('UTF-8') + str_sjis.encode('UTF-8')
+      p str_utf8
+      p str_utf8.encoding
+    end
+  end
+
+  class Exercise2
+    def self.to_utf8(file)
+      File.open(file, 'r:UTF-8') do |f|
+        p f.read
+        p f.read.encoding
+      end
+    end
+  end
+
+  class Exercise3
+    def self.find_encoding_diff(str)
+      p str.encode('Shift_JIS') == str.encode('Windows-31J')
+    end
+  end
+end
+
+puts '****************************************'
+puts "Chapter 19\n\n"
+puts 'exercise 1'
+Chapter19::Exercise1.to_utf8('euc'.encode('EUC-JP'), 'シフジス'.encode('Shift_JIS'))
+puts 'exercise 2'
+File.open('./Chapter_19.txt', 'w+:Shift_JIS') { |f| f.write('こんにちは') }
+Chapter19::Exercise2.to_utf8('./Chapter_19.txt')
+puts 'exercise 3'
+Chapter19::Exercise3.find_encoding_diff('あ')
+puts '****************************************'

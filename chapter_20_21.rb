@@ -15,7 +15,7 @@ module Chapter20
     require 'time'
     def self.jparsedate(jp_date)
       date = Time.strptime(jp_date, '%Y年%m月%d日午後%H時%M分%S秒')
-      p date += 43200 if jp_date =~ /午後/
+      p date += 43_200 if jp_date =~ /午後/
     end
   end
 
@@ -78,4 +78,53 @@ puts
 puts 'exercise 4'
 Chapter20::Exercise4.new.make_calendar
 puts
+puts '****************************************'
+
+# Chapter 21
+
+module Chapter21
+  class Exercise1
+    def self.my_collect(object, &block)
+      ary = []
+      object.each do |obj|
+        ary << block.call(obj)
+      end
+      ary
+    end
+  end
+
+  class Exercise2
+    def self.exercise2
+      to_class = :class.to_proc
+      p to_class.call('test')
+      p to_class.call(123)
+      p to_class.call(2**100)
+    end
+  end
+
+  class Exercise3
+    def self.accumlator
+      total = 0
+      proc do |i|
+        total += i
+      end
+    end
+  end
+end
+
+puts '****************************************'
+puts "Chapter 21\n\n"
+puts 'exercise 1'
+ary = Chapter21::Exercise1.my_collect([1, 2, 3, 4, 5]) do |i|
+  i * 2
+end
+p ary
+puts 'exercise 2'
+Chapter21::Exercise2.exercise2
+puts 'exercise 3'
+acc = Chapter21::Exercise3.accumlator
+p acc.call(1)
+p acc.call(2)
+p acc.call(3)
+p acc.call(4)
 puts '****************************************'

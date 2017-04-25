@@ -24,8 +24,8 @@ module Chapter14
   class Exercise4
     def self.count_char
       char_ary = 'Ruby is an object oriented programming language'.split('')
-      char_hash = char_ary.sort.each_with_object(Hash.new(0)) { |a, hash| hash[a] += 1; }
-      char_hash.each do |char, count|
+      char_count = char_ary.sort.each_with_object(Hash.new(0)) { |a, hash| hash[a] += 1; }
+      char_count.each do |char, count|
         puts "'#{char}': #{ '*' * count }"
       end
     end

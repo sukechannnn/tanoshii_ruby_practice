@@ -10,7 +10,7 @@ module Chapter14
   class Exercise2
     def self.sort_by_alphabet
       ary = Exercise1.string_to_ary
-      ary.sort_by { |a| a[0] }
+      ary.sort
     end
   end
 

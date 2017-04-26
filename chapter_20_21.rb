@@ -93,7 +93,8 @@ module Chapter20
 
     def make_day_str(day)
       # "#{day} ".length == 2 ? " #{day} " : "#{day} "
-      sprintf('%2d ', day)
+      # sprintf('%2d ', day)
+      '%2d '% day
     end
   end
 end

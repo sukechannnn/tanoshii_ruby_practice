@@ -45,11 +45,12 @@ module Chapter17
     end
 
     def self.count_word(file)
-      File.read(file).split(/[\s+[[:blank:]]]/).reject { |w| w.empty? }.size
+      File.read(file).split(/[\s+[[:blank:]]]/).size
     end
 
     def self.count_char(file)
-      File.read(file).split('').reject { |w| w.match(/[\s+[[:blank:]]]/) }.size
+      # File.read(file).split('').reject { |w| w.match(/[\s+[[:blank:]]]/) }.size
+      File.read(file).gsub(/[\s+[[:blank:]]]/, '').size
     end
   end
 
@@ -114,13 +115,11 @@ module Chapter17
 
   class Exercise4
     def self.check_buffering_byte
-      writen = 1
       open('./Chapter_17_2_4.txt', 'w') do |f|
-        100_000.times do
+        1.upto(100_000) do |i|
           f.write('a')
           size = File.size('./Chapter_17_2_4.txt')
-          p [writen, size] if writen == size
-          writen += 1
+          p [i, size] if i == size
         end
       end
     end
@@ -140,5 +139,5 @@ p Chapter17::Exercise2.new('./Chapter_17_2_3.txt').delete_except_last_line
 puts 'Exercise 3'
 p Chapter17::Exercise3.tail(5, './Chapter_17_3.txt')
 puts 'Exercise 4'
-p Chapter17::Exercise4.check_buffering_byte
+Chapter17::Exercise4.check_buffering_byte
 puts '****************************************'

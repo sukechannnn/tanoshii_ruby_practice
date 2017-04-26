@@ -66,7 +66,7 @@ end
 puts '****************************************'
 puts "Chapter 19\n\n"
 puts 'exercise 1'
-Chapter19::Exercise1.to_utf8('euc'.encode('EUC-JP'), 'シフジス'.encode('Shift_JIS'))
+Chapter19::Exercise1.to_utf8('いーゆーしー'.encode('EUC-JP'), 'シフジス'.encode('Shift_JIS'))
 puts 'exercise 2'
 File.open('./Chapter_19.txt', 'w+:Shift_JIS') { |f| f.write('こんにちは') }
 Chapter19::Exercise2.to_utf8('./Chapter_19.txt')

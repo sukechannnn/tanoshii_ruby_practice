@@ -1,0 +1,3 @@
+たのしい Ruby
+Rubyは　たのしい
+Ruby is fun.

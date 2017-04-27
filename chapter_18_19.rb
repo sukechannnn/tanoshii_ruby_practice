@@ -58,7 +58,10 @@ module Chapter19
 
   class Exercise3
     def self.find_encoding_diff(str)
-      p str.encode('Shift_JIS') == str.encode('Windows-31J')
+      p str.encode('Windows-31J')
+      p str.encode('Shift_JIS')
+    rescue => e
+      p e
     end
   end
 end
@@ -71,5 +74,5 @@ puts 'exercise 2'
 File.open('./Chapter_19.txt', 'w+:Shift_JIS') { |f| f.write('こんにちは') }
 Chapter19::Exercise2.to_utf8('./Chapter_19.txt')
 puts 'exercise 3'
-Chapter19::Exercise3.find_encoding_diff('あ')
+Chapter19::Exercise3.find_encoding_diff('①')
 puts '****************************************'
